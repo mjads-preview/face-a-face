@@ -428,14 +428,27 @@
       max-width: 1120px;
     }
 
+    .videos-section {
+      position: relative;
+      left: 50%;
+      right: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: #050505;
+      color: #fff;
+      padding: 88px max(28px, calc((100vw - 1200px) / 2)) 44px;
+    }
+
+    .videos-section .section__inner {
+      display: flex;
+      justify-content: center;
+    }
+
     .video-showcase {
       width: min(760px, 100%);
       margin-top: 12px;
-      padding: 36px 24px 28px;
-      border-radius: 28px;
-      background: #050505;
       color: #fff;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
     }
 
     .video-showcase__title {
@@ -523,8 +536,7 @@
     .video-showcase__meta {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: flex-start;
       padding: 18px 20px 20px;
     }
 
@@ -535,31 +547,16 @@
       line-height: 1.2;
     }
 
-    .video-showcase__sub {
-      margin: 6px 0 0;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .video-showcase__badge {
-      flex-shrink: 0;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
     .footer {
-      width: 100%;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      margin-right: -50vw;
       background: var(--footer-bg);
-      border-top: 1px solid var(--footer-border);
-      padding: 56px 72px;
+      border-top: 0;
+      padding: 28px max(28px, calc((100vw - 1200px) / 2)) 56px;
     }
 
     .footer__inner {
@@ -609,14 +606,23 @@
 
     @media (max-width: 991px) {
       .hero__content,
-      .section,
-      .footer {
+      .section {
         padding-left: 28px;
         padding-right: 28px;
       }
 
       .hero-logo-wrap {
         width: 380px;
+      }
+
+      .videos-section {
+        padding-top: 72px;
+        padding-bottom: 36px;
+      }
+
+      .footer {
+        padding-top: 24px;
+        padding-bottom: 42px;
       }
 
       .video-showcase {
@@ -711,36 +717,33 @@
       <h2 class="intro__lead">O Encontro Face a Face com Deus é mais do que um evento, é uma jornada espiritual intensiva de dois dias projetada para proporcionar uma experiência profunda de fé e renovação.</h2>
       <div class="intro__stack">
         <h3 class="intro__title">Todos nós fomos criados para pertencer a um propósito. Deus, em todo o seu esplendor, nunca quis que trilhássemos esse caminho sozinhos.</h3>
-        <div class="video-showcase">
-          <h4 class="video-showcase__title">Confira nossos últimos encontros</h4>
-          <div class="video-showcase__grid">
-            <a href="#" data-video-id="OoAcbiPBZaQ" class="video-showcase__card">
-              <div class="video-showcase__thumb">
-                <img src="https://img.youtube.com/vi/OoAcbiPBZaQ/maxresdefault.jpg" alt="Vídeo Face a Face 1">
-                <div class="video-showcase__play" aria-hidden="true"></div>
-              </div>
-              <div class="video-showcase__meta">
-                <div>
-                  <p class="video-showcase__label">Face a Face</p>
-                  <p class="video-showcase__sub">Assistir no YouTube</p>
-                </div>
-                <span class="video-showcase__badge">YouTube</span>
-              </div>
-            </a>
-            <a href="#" data-video-id="qKwr7lgRc3c" class="video-showcase__card">
-              <div class="video-showcase__thumb">
-                <img src="https://img.youtube.com/vi/qKwr7lgRc3c/maxresdefault.jpg" alt="Vídeo Face a Face 2">
-                <div class="video-showcase__play" aria-hidden="true"></div>
-              </div>
-              <div class="video-showcase__meta">
-                <div>
-                  <p class="video-showcase__label">Face a Face</p>
-                  <p class="video-showcase__sub">Assistir no YouTube</p>
-                </div>
-                <span class="video-showcase__badge">YouTube</span>
-              </div>
-            </a>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="videos-section">
+    <div class="section__inner">
+      <div class="video-showcase">
+        <h4 class="video-showcase__title">Confira nossos últimos encontros</h4>
+        <div class="video-showcase__grid">
+          <a href="#" data-video-id="OoAcbiPBZaQ" class="video-showcase__card">
+            <div class="video-showcase__thumb">
+              <img src="https://img.youtube.com/vi/OoAcbiPBZaQ/maxresdefault.jpg" alt="Vídeo Face a Face 1">
+              <div class="video-showcase__play" aria-hidden="true"></div>
+            </div>
+            <div class="video-showcase__meta">
+              <p class="video-showcase__label">Face a Face - Homens</p>
+            </div>
+          </a>
+          <a href="#" data-video-id="qKwr7lgRc3c" class="video-showcase__card">
+            <div class="video-showcase__thumb">
+              <img src="https://img.youtube.com/vi/qKwr7lgRc3c/maxresdefault.jpg" alt="Vídeo Face a Face 2">
+              <div class="video-showcase__play" aria-hidden="true"></div>
+            </div>
+            <div class="video-showcase__meta">
+              <p class="video-showcase__label">Face a Face - Mulheres</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
