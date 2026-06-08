@@ -267,6 +267,126 @@
       cursor: pointer;
     }
 
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(3, 5, 10, 0.82);
+      backdrop-filter: blur(12px);
+    }
+
+    .video-modal.is-open {
+      display: flex;
+    }
+
+    .video-modal__panel {
+      position: relative;
+      width: min(760px, 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0a0a0a;
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.42);
+    }
+
+    .video-modal__body {
+      padding: 22px 22px 26px;
+    }
+
+    .video-modal__frame {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+      margin-bottom: 20px;
+    }
+
+    .video-modal__frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-modal__thumb {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+      margin-bottom: 20px;
+    }
+
+    .video-modal__thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-modal__thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.4) 100%);
+    }
+
+    .video-modal__play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.25);
+    }
+
+    .video-modal__play::before {
+      content: "";
+      display: block;
+      margin-left: 6px;
+      width: 0;
+      height: 0;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-left: 22px solid #111;
+    }
+
+    .video-modal__close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .video-modal__close:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.04);
+    }
+
     .section {
       background: #fff;
       padding: 88px 72px;
@@ -308,15 +428,131 @@
       max-width: 1120px;
     }
 
-    .intro__image {
-      width: min(780px, 100%);
-      max-width: 100%;
-      border-radius: 0;
-      object-fit: contain;
-      border: 0;
-      box-shadow: none;
-      aspect-ratio: auto;
-      background: transparent;
+    .video-showcase {
+      width: min(760px, 100%);
+      margin-top: 12px;
+      padding: 36px 24px 28px;
+      border-radius: 28px;
+      background: #050505;
+      color: #fff;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
+    }
+
+    .video-showcase__title {
+      margin: 0 0 26px;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .video-showcase__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .video-showcase__card {
+      position: relative;
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .video-showcase__card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+    }
+
+    .video-showcase__thumb {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .video-showcase__thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-showcase__thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.34) 100%);
+    }
+
+    .video-showcase__play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 78px;
+      height: 78px;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.25);
+    }
+
+    .video-showcase__play::before {
+      content: "";
+      display: block;
+      margin-left: 5px;
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 20px solid #111;
+    }
+
+    .video-showcase__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px 20px;
+    }
+
+    .video-showcase__label {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .video-showcase__sub {
+      margin: 6px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .video-showcase__badge {
+      flex-shrink: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .footer {
@@ -381,6 +617,11 @@
 
       .hero-logo-wrap {
         width: 380px;
+      }
+
+      .video-showcase {
+        padding-left: 18px;
+        padding-right: 18px;
       }
     }
 
@@ -470,10 +711,37 @@
       <h2 class="intro__lead">O Encontro Face a Face com Deus é mais do que um evento, é uma jornada espiritual intensiva de dois dias projetada para proporcionar uma experiência profunda de fé e renovação.</h2>
       <div class="intro__stack">
         <h3 class="intro__title">Todos nós fomos criados para pertencer a um propósito. Deus, em todo o seu esplendor, nunca quis que trilhássemos esse caminho sozinhos.</h3>
-        <img
-          src="images/culto.png"
-          alt="Comunidade da Igreja Amor e Cuidado"
-          class="intro__image">
+        <div class="video-showcase">
+          <h4 class="video-showcase__title">Confira nossos últimos encontros</h4>
+          <div class="video-showcase__grid">
+            <a href="#" data-video-id="OoAcbiPBZaQ" class="video-showcase__card">
+              <div class="video-showcase__thumb">
+                <img src="https://img.youtube.com/vi/OoAcbiPBZaQ/maxresdefault.jpg" alt="Vídeo Face a Face 1">
+                <div class="video-showcase__play" aria-hidden="true"></div>
+              </div>
+              <div class="video-showcase__meta">
+                <div>
+                  <p class="video-showcase__label">Face a Face</p>
+                  <p class="video-showcase__sub">Assistir no YouTube</p>
+                </div>
+                <span class="video-showcase__badge">YouTube</span>
+              </div>
+            </a>
+            <a href="#" data-video-id="qKwr7lgRc3c" class="video-showcase__card">
+              <div class="video-showcase__thumb">
+                <img src="https://img.youtube.com/vi/qKwr7lgRc3c/maxresdefault.jpg" alt="Vídeo Face a Face 2">
+                <div class="video-showcase__play" aria-hidden="true"></div>
+              </div>
+              <div class="video-showcase__meta">
+                <div>
+                  <p class="video-showcase__label">Face a Face</p>
+                  <p class="video-showcase__sub">Assistir no YouTube</p>
+                </div>
+                <span class="video-showcase__badge">YouTube</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -509,6 +777,13 @@
     </div>
   </div>
 
+  <div class="video-modal" id="video-modal" aria-hidden="true">
+    <div class="video-modal__panel" role="dialog" aria-modal="true" aria-label="Reprodução de vídeo">
+      <button type="button" class="video-modal__close" id="close-video-modal" aria-label="Fechar vídeo">×</button>
+      <div class="video-modal__body" id="video-modal-frame"></div>
+    </div>
+  </div>
+
   <script>
     (function () {
       var openButton = document.getElementById("open-signup-modal");
@@ -535,6 +810,64 @@
       });
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") closeModal();
+      });
+    })();
+
+    (function () {
+      var videoModal = document.getElementById("video-modal");
+      var videoFrame = document.getElementById("video-modal-frame");
+      var closeVideoButton = document.getElementById("close-video-modal");
+      var videoCards = document.querySelectorAll("[data-video-id]");
+
+      if (!videoModal || !videoFrame || !closeVideoButton || !videoCards.length) return;
+
+      function openVideoModal(event) {
+        event.preventDefault();
+        var videoId = this.getAttribute("data-video-id");
+        if (!videoId) return;
+        var videoUrl = "https://www.youtube.com/watch?v=" + videoId;
+        var thumbUrl = "https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg";
+        var isHosted = window.location.protocol === "https:" || window.location.protocol === "http:";
+
+        if (isHosted) {
+          var origin = encodeURIComponent(window.location.origin);
+          var embedUrl =
+            "https://www.youtube.com/embed/" +
+            videoId +
+            "?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=" +
+            origin;
+
+          videoFrame.innerHTML =
+            '<div class="video-modal__frame">' +
+            '<iframe src="' + embedUrl + '" title="Vídeo Face a Face" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' +
+            '</div>';
+        } else {
+          videoFrame.innerHTML =
+            '<div class="video-modal__thumb">' +
+            '<img src="' + thumbUrl + '" alt="Prévia do vídeo Face a Face">' +
+            '<div class="video-modal__play" aria-hidden="true"></div>' +
+            '</div>';
+        }
+        videoModal.classList.add("is-open");
+        videoModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeVideoModal() {
+        videoModal.classList.remove("is-open");
+        videoModal.setAttribute("aria-hidden", "true");
+        videoFrame.innerHTML = "";
+      }
+
+      videoCards.forEach(function (card) {
+        card.addEventListener("click", openVideoModal);
+      });
+
+      closeVideoButton.addEventListener("click", closeVideoModal);
+      videoModal.addEventListener("click", function (event) {
+        if (event.target === videoModal) closeVideoModal();
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeVideoModal();
       });
     })();
   </script>
