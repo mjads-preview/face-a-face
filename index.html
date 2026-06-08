@@ -186,6 +186,87 @@
       z-index: 1;
     }
 
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(4, 6, 12, 0.58);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal__panel {
+      width: min(460px, 100%);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .modal__title {
+      margin: 0 0 10px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #101010;
+    }
+
+    .modal__text {
+      margin: 0 0 24px;
+      color: #5e5e5e;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .modal__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .modal__button {
+      border: 0;
+      border-radius: 18px;
+      padding: 18px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    }
+
+    .modal__button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.12);
+      filter: saturate(1.05);
+    }
+
+    .modal__button--men {
+      background: #bfe8ff;
+      color: #16354a;
+    }
+
+    .modal__button--women {
+      background: #ffd1e7;
+      color: #5b2740;
+    }
+
+    .modal__close {
+      margin-top: 16px;
+      background: transparent;
+      border: 0;
+      color: #777;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     .section {
       background: #fff;
       padding: 88px 72px;
@@ -338,6 +419,10 @@
         gap: 10px;
       }
 
+      .modal__actions {
+        grid-template-columns: 1fr;
+      }
+
       .footer__link {
         gap: 6px;
         font-size: 13px;
@@ -372,7 +457,7 @@
         </div>
         <p class="hero__eyebrow">Tenha um Encontro com a Presença de Deus</p>
         <h1 class="hero__title">NA TERRA ASSIM COMO É NO CÉU.</h1>
-        <a href="#" class="hero__cta">
+        <a href="#" class="hero__cta" id="open-signup-modal">
           <span>Fazer Minha Inscrição</span>
           <img src="images/614d55649ab53e85fa25255a_arrow-black.svg" width="16" height="16" alt="">
         </a>
@@ -411,5 +496,47 @@
       </a>
     </div>
   </footer>
+
+  <div class="modal" id="signup-modal" aria-hidden="true">
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
+      <h2 class="modal__title" id="signup-modal-title">Escolha sua inscrição</h2>
+      <p class="modal__text">Selecione a opção desejada para continuar.</p>
+      <div class="modal__actions">
+        <a href="https://ongetty.com.br/detalhe-evento/face-a-face-homens-casados-2026-06" target="_blank" rel="noopener noreferrer" class="modal__button modal__button--men">HOMENS</a>
+        <a href="https://ongetty.com.br/detalhe-evento/face-a-face-mulheres" target="_blank" rel="noopener noreferrer" class="modal__button modal__button--women">MULHERES</a>
+      </div>
+      <button type="button" class="modal__close" id="close-signup-modal">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var openButton = document.getElementById("open-signup-modal");
+      var closeButton = document.getElementById("close-signup-modal");
+      var modal = document.getElementById("signup-modal");
+
+      if (!openButton || !closeButton || !modal) return;
+
+      function openModal(event) {
+        event.preventDefault();
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      openButton.addEventListener("click", openModal);
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeModal();
+      });
+    })();
+  </script>
 </body>
 </html>
