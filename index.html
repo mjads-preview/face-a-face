@@ -392,6 +392,176 @@
       padding: 88px 72px;
     }
 
+    .white-glow {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(188, 188, 188, 0.96), transparent 19%),
+        radial-gradient(circle at 88% 14%, rgba(192, 192, 192, 0.92), transparent 19%),
+        radial-gradient(circle at 24% 84%, rgba(190, 190, 190, 0.92), transparent 22%),
+        radial-gradient(circle at 78% 82%, rgba(186, 186, 186, 0.9), transparent 22%),
+        radial-gradient(circle at 52% 96%, rgba(196, 196, 196, 0.96), transparent 24%),
+        radial-gradient(circle at 50% 78%, rgba(210, 210, 210, 0.94), transparent 20%),
+        radial-gradient(circle at 18% 46%, rgba(255, 255, 255, 0.98) 0, rgba(255, 255, 255, 0.98) 8px, transparent 9px),
+        radial-gradient(circle at 24% 44%, rgba(255, 255, 255, 0.94) 0, rgba(255, 255, 255, 0.94) 14px, transparent 15px),
+        radial-gradient(circle at 31% 52%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.9) 10px, transparent 11px),
+        radial-gradient(circle at 39% 47%, rgba(255, 255, 255, 0.98) 0, rgba(255, 255, 255, 0.98) 7px, transparent 8px),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.96) 12px, transparent 13px),
+        radial-gradient(circle at 59% 45%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.9) 9px, transparent 10px),
+        radial-gradient(circle at 68% 53%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.96) 8px, transparent 9px),
+        radial-gradient(circle at 76% 48%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.9) 16px, transparent 17px),
+        radial-gradient(circle at 84% 51%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.96) 9px, transparent 10px),
+        linear-gradient(180deg, #d1d1d1 0%, #dddddd 30%, #d8d8d8 68%, #cdcdcd 100%);
+    }
+
+    .white-glow::before,
+    .white-glow::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .white-glow::before {
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.98) 0 12px, transparent 13px) 12% 18% / 230px 150px no-repeat,
+        radial-gradient(circle, rgba(255, 255, 255, 0.94) 0 8px, transparent 9px) 84% 22% / 190px 140px no-repeat,
+        radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 7px, transparent 8px) 4% 44% / 170px 140px no-repeat,
+        radial-gradient(circle at 16% 22%, rgba(255, 255, 255, 1), transparent 14%),
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.86), transparent 15%),
+        radial-gradient(circle at 28% 76%, rgba(255, 255, 255, 0.9), transparent 16%),
+        radial-gradient(circle at 74% 74%, rgba(255, 255, 255, 0.84), transparent 17%),
+        radial-gradient(circle at 50% 16%, rgba(255, 255, 255, 0.74), transparent 13%),
+        radial-gradient(circle at 48% 92%, rgba(255, 255, 255, 0.86), transparent 18%),
+        radial-gradient(circle at 18% 96%, rgba(255, 255, 255, 0.58), transparent 14%),
+        radial-gradient(circle at 84% 94%, rgba(255, 255, 255, 0.58), transparent 14%);
+      opacity: 1;
+      filter: blur(26px);
+    }
+
+    .white-glow::after {
+      top: 26%;
+      bottom: -40px;
+      height: auto;
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 1) 0 5px, transparent 6px) 3% 50% / 58px 58px repeat-x,
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 10px, transparent 11px) 0 50% / 118px 96px repeat-x,
+        radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 22px, transparent 23px) 12% 48% / 190px 130px repeat-x,
+        radial-gradient(circle, rgba(255, 255, 255, 0.54) 0 34px, transparent 35px) 18% 82% / 260px 170px repeat-x;
+      opacity: 1;
+      filter: blur(5px);
+    }
+
+    .white-glow > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .white-glow .section {
+      background: transparent;
+    }
+
+    .story-carousel {
+      background: transparent;
+      padding: 12px 0 16px;
+      overflow: hidden;
+    }
+
+    .story-carousel__viewport {
+      width: 100%;
+      position: relative;
+      min-height: 620px;
+    }
+
+    .story-carousel__track {
+      position: relative;
+      width: min(1440px, 100%);
+      min-height: 620px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .story-carousel__slide {
+      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      cursor: pointer;
+      opacity: 0;
+      transition: transform 0.7s ease, opacity 0.7s ease, filter 0.7s ease;
+      transform-origin: center center;
+    }
+
+    .story-carousel__slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      border: 2px solid transparent;
+      background: rgba(0, 0, 0, 0.22);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+      pointer-events: none;
+    }
+
+    .story-carousel__slide.is-active {
+      opacity: 1;
+      z-index: 4;
+    }
+
+    .story-carousel__slide.is-active::after {
+      border-color: rgba(17, 17, 17, 0.14);
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .story-carousel__video {
+      width: 260px;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      border-radius: 24px;
+      background: #0b0b0b;
+      box-shadow: none;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+      filter: saturate(0.62);
+    }
+
+    .story-carousel__slide.is-active .story-carousel__video {
+      transform: scale(1);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+      filter: saturate(1);
+    }
+
+    .story-carousel__slide--active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.2);
+      z-index: 4;
+    }
+
+    .story-carousel__slide--prev {
+      opacity: 0.92;
+      transform: translate(calc(-50% - 250px), -50%) scale(0.92);
+      z-index: 3;
+    }
+
+    .story-carousel__slide--next {
+      opacity: 0.92;
+      transform: translate(calc(-50% + 250px), -50%) scale(0.92);
+      z-index: 3;
+    }
+
+    .story-carousel__slide--far {
+      opacity: 0.62;
+      transform: translate(calc(-50% - 500px), -50%) scale(0.82);
+      z-index: 2;
+    }
+
+    .story-carousel__slide--far-right {
+      opacity: 0.62;
+      transform: translate(calc(-50% + 500px), -50%) scale(0.82);
+      z-index: 1;
+    }
+
     .section__inner {
       width: min(1280px, 100%);
       margin: 0 auto;
@@ -569,6 +739,15 @@
       flex-wrap: wrap;
     }
 
+    .footer__note {
+      width: min(1200px, 100%);
+      margin: 22px auto 0;
+      color: rgba(255, 255, 255, 0.68);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     .footer__link {
       display: inline-flex;
       align-items: center;
@@ -611,6 +790,11 @@
         padding-right: 28px;
       }
 
+      .story-carousel__track {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
       .hero-logo-wrap {
         width: 380px;
       }
@@ -638,6 +822,15 @@
         padding-bottom: 56px;
         justify-content: center;
         text-align: center;
+      }
+
+      .story-carousel {
+        margin-top: -24px;
+        padding-bottom: 8px;
+      }
+
+      .story-carousel__video {
+        border-radius: 20px;
       }
 
       .hero__copy {
@@ -686,6 +879,99 @@
       .footer__divider {
         font-size: 12px;
       }
+
+      .footer__note {
+        margin-top: 18px;
+        padding-left: 18px;
+        padding-right: 18px;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .story-carousel__viewport,
+      .story-carousel__track {
+        min-height: 520px;
+      }
+
+      .story-carousel__video {
+        width: 210px;
+      }
+
+      .story-carousel__slide--active {
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+
+      .story-carousel__slide--prev {
+        transform: translate(calc(-50% - 150px), -50%) scale(0.86);
+      }
+
+      .story-carousel__slide--next {
+        transform: translate(calc(-50% + 150px), -50%) scale(0.86);
+      }
+
+      .story-carousel__slide--far {
+        transform: translate(calc(-50% - 290px), -50%) scale(0.72);
+      }
+
+      .story-carousel__slide--far-right {
+        transform: translate(calc(-50% + 290px), -50%) scale(0.72);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .story-carousel__viewport,
+      .story-carousel__track {
+        min-height: 390px;
+      }
+
+      .story-carousel__track {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .story-carousel__video {
+        width: 152px;
+        border-radius: 18px;
+      }
+
+      .story-carousel__slide--active {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+
+      .story-carousel__slide--prev {
+        transform: translate(calc(-50% - 100px), -50%) scale(0.8);
+      }
+
+      .story-carousel__slide--next {
+        transform: translate(calc(-50% + 100px), -50%) scale(0.8);
+      }
+
+      .story-carousel__slide--far {
+        transform: translate(calc(-50% - 185px), -50%) scale(0.64);
+      }
+
+      .story-carousel__slide--far-right {
+        transform: translate(calc(-50% + 185px), -50%) scale(0.64);
+      }
+
+      .section.intro {
+        padding-top: 0;
+        padding-bottom: 32px;
+      }
+
+      .intro__lead {
+        margin-top: -8px;
+        margin-bottom: 28px;
+      }
+
+      .intro__title {
+        margin-bottom: 0;
+      }
+
+      .videos-section {
+        padding-top: 40px;
+      }
     }
   </style>
 </head>
@@ -712,14 +998,49 @@
     </div>
   </section>
 
+  <div class="white-glow">
+  <section class="story-carousel" aria-label="Momentos do Face a Face">
+    <div class="story-carousel__viewport">
+      <div class="story-carousel__track" id="story-carousel-track">
+        <div class="story-carousel__slide is-active" data-carousel-slide>
+          <video class="story-carousel__video" muted loop playsinline preload="metadata">
+            <source src="media/1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="story-carousel__slide" data-carousel-slide>
+          <video class="story-carousel__video" muted loop playsinline preload="metadata">
+            <source src="media/2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="story-carousel__slide" data-carousel-slide>
+          <video class="story-carousel__video" muted loop playsinline preload="metadata">
+            <source src="media/3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="story-carousel__slide" data-carousel-slide>
+          <video class="story-carousel__video" muted loop playsinline preload="metadata">
+            <source src="media/4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="story-carousel__slide" data-carousel-slide>
+          <video class="story-carousel__video" muted loop playsinline preload="metadata">
+            <source src="media/5.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section intro">
     <div class="section__inner">
       <h2 class="intro__lead">O Encontro Face a Face com Deus é mais do que um evento, é uma jornada espiritual intensiva de dois dias projetada para proporcionar uma experiência profunda de fé e renovação.</h2>
       <div class="intro__stack">
-        <h3 class="intro__title">Todos nós fomos criados para pertencer a um propósito. Deus, em todo o seu esplendor, nunca quis que trilhássemos esse caminho sozinhos.</h3>
+        <h3 class="intro__title">Todos nós fomos criados para pertencer a um propósito. E Deus, em todo o seu esplendor, nunca quis que trilhássemos esse caminho sozinhos.</h3>
       </div>
     </div>
   </section>
+
+  </div>
 
   <section class="videos-section">
     <div class="section__inner">
@@ -766,6 +1087,7 @@
         <span>Spotify</span>
       </a>
     </div>
+    <p class="footer__note">© 2026 Igreja Amor e Cuidado. Todos os direitos reservados.</p>
   </footer>
 
   <div class="modal" id="signup-modal" aria-hidden="true">
@@ -788,6 +1110,92 @@
   </div>
 
   <script>
+    (function () {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+
+      window.scrollTo(0, 0);
+    })();
+
+    (function () {
+      var carouselTrack = document.getElementById("story-carousel-track");
+
+      if (carouselTrack) {
+        var carouselSlides = Array.prototype.slice.call(
+          carouselTrack.querySelectorAll("[data-carousel-slide]")
+        );
+        var carouselIndex = 0;
+        var carouselTimer;
+
+        function syncPlayback(activeIndex) {
+          carouselSlides.forEach(function (slide, index) {
+            var video = slide.querySelector("video");
+            var isActive = index === activeIndex;
+            var delta = (index - activeIndex + carouselSlides.length) % carouselSlides.length;
+
+            slide.classList.remove(
+              "is-active",
+              "story-carousel__slide--active",
+              "story-carousel__slide--prev",
+              "story-carousel__slide--next",
+              "story-carousel__slide--far",
+              "story-carousel__slide--far-right"
+            );
+
+            if (delta === 0) {
+              slide.classList.add("is-active", "story-carousel__slide--active");
+            } else if (delta === 1) {
+              slide.classList.add("story-carousel__slide--next");
+            } else if (delta === 2) {
+              slide.classList.add("story-carousel__slide--far-right");
+            } else if (delta === carouselSlides.length - 1) {
+              slide.classList.add("story-carousel__slide--prev");
+            } else {
+              slide.classList.add("story-carousel__slide--far");
+            }
+
+            if (!video) return;
+
+            if (isActive) {
+              video.currentTime = 0;
+              var playPromise = video.play();
+              if (playPromise && typeof playPromise.catch === "function") {
+                playPromise.catch(function () {});
+              }
+            } else {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+        }
+
+        function setActiveSlide(index) {
+          carouselIndex = index;
+          syncPlayback(carouselIndex);
+        }
+
+        function advanceCarousel() {
+          setActiveSlide((carouselIndex + 1) % carouselSlides.length);
+        }
+
+        function restartTimer() {
+          clearInterval(carouselTimer);
+          carouselTimer = setInterval(advanceCarousel, 12000);
+        }
+
+        carouselSlides.forEach(function (slide, index) {
+          slide.addEventListener("click", function () {
+            setActiveSlide(index);
+            restartTimer();
+          });
+        });
+
+        setActiveSlide(0);
+        restartTimer();
+      }
+    })();
+
     (function () {
       var openButton = document.getElementById("open-signup-modal");
       var closeButton = document.getElementById("close-signup-modal");
